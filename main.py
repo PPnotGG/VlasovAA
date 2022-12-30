@@ -269,7 +269,7 @@ print(f'{my_data.dynamics_stats.city_vacancy["name"]}: {my_data.dynamics_stats.c
 report = Report(my_data)
 main_input = input('Введите тип вывода: ')
 if main_input != "Вакансии" and main_input != "Cтатистика":
-    print("Введён неправильный тип вывода")
+    print("Введён неправильный тип вода")
 if main_input == "Вакансии":
     report.generate_excel(my_task.task_conditions['req_prof']['val'])
 else:
