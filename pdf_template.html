@@ -1,0 +1,64 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Аналитика</title>
+</head>
+<body style="font-family: sans-serif">
+    <h1 style="font-size: 32px">Аналитика по зарплатам и городам для профессии {{profession}}</h1>
+    <img src="file:///C:/Users/ав/Desktop/программы/Python/pythonProject/{{image}}" alt="картинка">
+    <h2 style="font-size: 24px">Статистика по годам</h2>
+    <table style="border: 1px solid black; border-collapse: collapse; width: 100%">
+        <tr>
+            {% for cell in year_stat[1]: %}
+            <th style="border: 1px solid black; font-weight: bold; padding: 5px">{{cell.value}}</th>
+            {% endfor %}
+        </tr>
+        {% for row_index in range(2, year_stat.max_row + 1): %}
+        <tr>
+            {% for cell in year_stat[row_index]: %}
+            <th style="border: 1px solid black; font-weight: normal; padding: 5px">{{cell.value}}</th>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <h2 style="font-size: 24px">Статистика по городам</h2>
+    <div>
+        <table style="float:left; width: 49%; border-collapse: collapse">
+            <tr>
+                {% for column in range(1, 3): %}
+                <th style="border: 1px solid black; font-weight: bold; padding: 5px; text-align: center">
+                    {{cities_stat.cell(column=column, row=1).value}}
+                </th>
+                {% endfor %}
+            </tr>
+            {% for row in range(2, cities_stat.max_row + 1): %}
+            <tr>
+                {% for column in range(1, 3): %}
+                <td style="padding: 5px; border: 1px solid black; font-weight: normal; text-align: center">
+                    {{ cities_stat.cell(column=column, row=row).value }}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        <table style="float:right; width: 49%; border-collapse: collapse; ">
+            <tr>
+                {% for column in range(4, 6): %}
+                <th style="border: 1px solid black; font-weight: bold; padding: 5px; text-align: center">
+                    {{cities_stat.cell(column=column, row=1).value}}
+                </th>
+                {% endfor %}
+            </tr>
+            {% for row in range(2, cities_stat.max_row + 1): %}
+            <tr>
+                {% for column in range(4, 6): %}
+                <td style="padding: 5px; border: 1px solid black; font-weight: normal; text-align: center">
+                    {{ cities_stat.cell(column=column, row=row).value }}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
